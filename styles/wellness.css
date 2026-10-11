@@ -1,0 +1,45 @@
+/* ── wellness.css ────────────────────────────────────────────
+   CHANGES:
+   - label font-weight 700 → 400
+   - score font-size 2.4rem → 2rem, weight 900 → 700
+   - padding ลดลง
+──────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+.wellness-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f2f2f2;
+  border-radius: 16px;
+  padding: 18px 24px;
+}
+
+.wellness-left .wellness-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.wellness-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.wellness-title {
+  /* CHANGE: weight บางลง */
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: #555;
+}
+
+.wellness-score {
+  /* CHANGE: เล็กลง + บางลง */
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.1;
+}

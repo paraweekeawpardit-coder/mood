@@ -1,0 +1,57 @@
+/* ── week.css ────────────────────────────────────────────────
+   CHANGES:
+   - message-box font-weight 600 → 400, size เล็กลง
+   - border อ่อนลง
+──────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+.week-container {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #d8d8d8;
+  padding: 20px 24px;
+  align-items: center;
+}
+
+.chart-wrapper {
+  width: 100%;
+}
+
+.recharts-cartesian-axis-tick text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  /* CHANGE: weight บางลง */
+  font-weight: 600;
+  fill: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.recharts-yAxis .recharts-cartesian-axis-tick text {
+  display: none;
+}
+
+.recharts-tooltip-wrapper {
+  font-family: 'Nunito', sans-serif;
+}
+
+.message-box {
+  font-size: 0.84rem;
+  /* CHANGE: weight บางลง 600 → 400 */
+  font-weight: 400;
+  color: #444;
+  line-height: 1.7;
+}
+
+.loading {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  color: #aaa;
+  font-weight: 400;
+  padding: 24px;
+  text-align: center;
+}

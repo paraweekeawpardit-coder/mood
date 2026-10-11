@@ -1,0 +1,30 @@
+/* src/styles/trend.css */
+.trend-container {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.trend-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #222222;
+}
+
+.trend-container .no-data {
+    color: #888888;
+    font-size: 14px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* สำหรับครอบคลุมสไตล์ภายในตัว Recharts SVG ให้สวยขึ้น */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+    stroke: #F0F0F0 !important;
+}

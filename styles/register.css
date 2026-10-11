@@ -1,0 +1,147 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+ 
+/* ── Container ── */
+.container {
+  font-family: 'Nunito', sans-serif;
+  width: 100%;
+  position: relative;   /* ให้ decorative circles ใน registerform position relative ต่อตรงนี้ */
+  overflow: hidden;
+}
+ 
+/* ── Header ── */
+.container .header {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  text-align: center;
+  margin-bottom: 24px;
+}
+ 
+/* ── Form layout ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+ 
+/* ── Input group ── */
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+ 
+.inputBox label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+}
+ 
+/* ── Inputs ── */
+.container .blank {
+  width: 100%;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  color: #1a1a2e;
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+ 
+.container .blank:focus {
+  box-shadow: 0 0 0 2.5px #a5b4fc;
+}
+ 
+/* ── Privacy checkbox ── */
+.privacy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #555;
+  margin: 4px 0 14px;
+}
+ 
+.privacy input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #6366f1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+ 
+/* ── Error message ── */
+.container .message {
+  font-size: 0.82rem;
+  color: #e53e3e;
+  text-align: center;
+  min-height: 18px;
+  margin-bottom: 6px;
+}
+ 
+/* ── Submit button ── */
+.submitBtn {
+  width: 100%;
+  padding: 13px;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+ 
+.submitBtn:hover  { background: #2d2d4e; }
+.submitBtn:active { transform: scale(0.98); }
+ 
+/* ── Decorative circles (inside register card) ── */
+.circle1,
+.circle2,
+.circle3,
+.circle4 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+ 
+.circle1 {
+  width: 110px;
+  height: 110px;
+  background: #fef9c3;  /* yellow */
+  bottom: -30px;
+  left: -30px;
+}
+ 
+.circle2 {
+  width: 70px;
+  height: 70px;
+  background: #c9edf7;  /* blue */
+  bottom: 30px;
+  left: 100px;
+}
+ 
+.circle3 {
+  width: 55px;
+  height: 55px;
+  background: #d1f7e0;  /* green */
+  bottom: 10px;
+  right: 60px;
+}
+ 
+.circle4 {
+  width: 85px;
+  height: 85px;
+  background: #fce4ec;  /* pink */
+  bottom: -20px;
+  right: 120px;
+}

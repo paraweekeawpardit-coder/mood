@@ -1,0 +1,60 @@
+.bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #ffffff;
+}
+
+.bar-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* ปรับขนาดโลโก้ตามรูป (แบรนด์ mood สีน้ำเงิน) */
+.bar-logo {
+    height: 45px;
+    object-fit: contain;
+}
+
+/* ปรับการเรียงตัวของเมนูลิงก์ */
+.bar-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.bar-menu li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.bar-menu li a:hover {
+    color: #666666;
+}
+
+/* ฝั่งขวา: ชื่อผู้ใช้ + รูปโปรไฟล์ */
+.bar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bar-username {
+    font-size: 18px;
+    font-weight: bold;
+    color: #9c9c9c; /* สีเทาตามรูปตัวอย่าง somjai inwza */
+}
+
+.bar-account {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}

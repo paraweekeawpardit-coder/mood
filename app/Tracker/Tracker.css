@@ -1,0 +1,63 @@
+/* ── Tracker.css ─────────────────────────────────────────────
+   Design ref: note form ซ้าย, calendar ขวา, navbar บนสุด
+──────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+/* ── Page wrapper ── */
+.tracker-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* ── Navbar ── */
+.tracker-navbar {
+  width: 100%;
+  border-bottom: 1px solid #e8e8e8;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ── Content: note ซ้าย calendar ขวา ── */
+/* Tracker.css */
+.tracker-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  padding: 32px 48px;
+  max-width: 1100px;
+  width: 100%;
+  align-items: start;
+
+  /* CHANGE: เพิ่ม 2 บรรทัดนี้ */
+  margin: 0 auto;        /* ← center ใน page */
+}
+
+/* ── Note column ── */
+.tracker-note {
+  width: 100%;
+}
+
+/* ── Calendar column ── */
+.tracker-calendar {
+  width: 100%;
+  padding-top: 8px;
+}

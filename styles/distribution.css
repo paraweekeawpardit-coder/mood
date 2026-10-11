@@ -1,0 +1,43 @@
+/* src/styles/distribution.css */
+.distribution-box {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.distribution-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #222222;
+}
+
+.no-data {
+    color: #888888;
+    font-size: 14px;
+    text-align: center;
+}
+
+.distribution-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.distribution-item:last-child {
+    margin-bottom: 0;
+}
+
+.mood-name {
+    color: #444444;
+}
+
+.distribution-percent {
+    font-weight: bold;
+    color: #222222;
+}

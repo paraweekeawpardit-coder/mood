@@ -1,0 +1,70 @@
+/* จัดการพื้นหลังของหน้าหลักให้เป็นสีเทาอ่อน/ขาว และปรับฟอนต์โดยรวม */
+.home-page {
+    background-color: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    color: #000000;
+}
+
+/* แถบเมนูด้านบน */
+.home-navbar {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* คอนเทนเนอร์หลัก จัดเนื้อหาให้อยู่ตรงกลางและจำกัดความกว้าง */
+.home-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* ระยะห่างระหว่างแต่ละ Section */
+}
+
+/* ส่วนหัวข้อต้อนรับ */
+.home-title h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+.home-title p {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin: 0;
+}
+
+/* จัดเรียงการ์ด Streak และ Wellness ให้อยู่ข้างกันแบบสัดส่วนเท่า ๆ กัน */
+.home-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.home-top-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* หัวข้อรองของแต่ละ Section */
+.section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0 0 15px 0;
+}
+
+/* จัดเรียงการ์ดแนะนำ (Mindfulness / Breathing) */
+.recommend-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ส่วนแสดงผลกราฟสัปดาห์ */
+.home-mood {
+    display: flex;
+    flex-direction: column;
+}

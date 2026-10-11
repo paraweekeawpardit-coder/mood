@@ -1,0 +1,46 @@
+/* Overview.css */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333333;
+}
+
+.overview-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.overview-navbar {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.overview-content {
+    display: grid;
+    grid-template-columns: 260px 1fr 340px;
+    gap: 24px;
+    align-items: start;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.overview-left,
+.overview-center,
+.overview-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Responsive เผื่อหน้าจอเล็กลง */
+@media (max-width: 1024px) {
+    .overview-content {
+        grid-template-columns: 1fr;
+    }
+}

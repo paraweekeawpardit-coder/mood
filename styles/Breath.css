@@ -1,0 +1,62 @@
+/* ── Breath.css ──────────────────────────────────────────────
+   CHANGES:
+   - title font-weight 800 → 600
+   - desc font-weight 600 → 400, color อ่อนลง
+   - padding ลดลง
+──────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+.breath-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f2f2f2;
+  border-radius: 16px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.breath-card:hover {
+  filter: brightness(0.97);
+}
+
+.breath-image-box {
+  flex-shrink: 0;
+  background: #ddf0f8;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.breath-image {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.breath-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.breath-title {
+  /* CHANGE: weight บางลง */
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.breath-description {
+  font-size: 0.75rem;
+  /* CHANGE: อ่อนลง */
+  color: #999;
+  font-weight: 400;
+  line-height: 1.4;
+}

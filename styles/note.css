@@ -1,0 +1,200 @@
+/* ── note.css ────────────────────────────────────────────────
+   CHANGES:
+   - .mood-label font-size เปลี่ยนเป็น 0 (วงกลมไม่มี text ในตัวเอง)
+   - เพิ่ม .mood-text สำหรับ label ที่อยู่ใต้วงกลม
+   - .radio เปลี่ยนเป็น flex-direction:column + align-items:center
+     ให้ text อยู่ใต้วงกลม
+   - แก้ comment syntax ผิด ── → ลบออก (ทำให้ CSS parse พังเดิม)
+   - .input-group เพิ่ม margin-bottom เพื่อ spacing ระหว่าง field
+   - เพิ่ม .saved-msg และ .msg แทน p:first-child / p:last-child
+     เพราะ structure เปลี่ยน
+──────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+/* ── Container ── */
+.note-container {
+  font-family: 'Nunito', sans-serif;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color:#FFFFFF;
+  border-radius: 20px;
+}
+
+/* ── Already saved ── */
+.saved-msg {
+  font-size: 0.82rem;
+  color: #aaa;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* ── Mood section wrapper ── */
+.mood-section {
+  margin-bottom: 8px;
+}
+
+/* ── Date ── */
+.note-date {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+/* ── Section title ── */
+.note-title {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* ── Mood group: flex row ── */
+.mood-group {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* CHANGE: .radio เป็น column ให้ text อยู่ใต้วงกลม */
+.radio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ซ่อน radio input จริง */
+input[type="radio"][name="mood"] {
+  display: none;
+}
+
+/* ── Mood circles ── */
+.mood-label {
+  display: block;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  /* CHANGE: font-size: 0 — ไม่มี text ในวงกลม */
+  font-size: 0;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  padding-top: 50px;
+}
+
+.mood-label:hover {
+  transform: scale(1.06);
+}
+
+/* ── Mood colors ── */
+.mood-label.verygood  { background: #b8f0c8; }
+.mood-label.great     { background: #fef9a0; }
+.mood-label.meh       { background: #ffd9a0; }
+.mood-label.mad       { background: #ffb8cc; }
+.mood-label.sad       { background: #b8ecf7; }
+.mood-label.anxious   { background: #d4b8f7; }
+
+/* ── Selected: inner white ring ── */
+input[type="radio"]:checked + .mood-label.verygood {
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 7px #6dcf8e inset;
+}
+input[type="radio"]:checked + .mood-label.great {
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 7px #e6d44a inset;
+}
+input[type="radio"]:checked + .mood-label.meh {
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 7px #f0a84a inset;
+}
+input[type="radio"]:checked + .mood-label.mad {
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 7px #f07898 inset;
+}
+input[type="radio"]:checked + .mood-label.sad {
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 7px #6acbe8 inset;
+}
+input[type="radio"]:checked + .mood-label.anxious {
+  box-shadow: 0 0 0 3px #fff inset, 0 0 0 7px #a87ee0 inset;
+}
+
+/* CHANGE: .mood-text — text แยกใต้วงกลม */
+.mood-text {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+/* ── Input group ── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  /* CHANGE: เพิ่ม margin-bottom ให้มี spacing ระหว่าง field */
+  margin-bottom: 14px;
+}
+
+.note-container label {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #333;
+  display: block;
+}
+
+/* ── Text inputs ── */
+.note-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: #f2f2f2;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  color: #1a1a2e;
+  outline: none;
+  transition: box-shadow 0.2s;
+  min-height: 48px;
+}
+
+.note-textarea:focus {
+  box-shadow: 0 0 0 2px #c4b5fd;
+}
+
+/* describe your day สูงกว่าช่องอื่น */
+.input-group:first-of-type .note-textarea {
+  min-height: 90px;
+}
+
+/* ── Submit ── */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: #1a1a2e;
+  color: #ffffff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.submit-btn:hover  { background: #2d2d4e; }
+.submit-btn:active { transform: scale(0.98); }
+
+/* ── Message ── */
+.msg {
+  font-size: 0.82rem;
+  color: #e53e3e;
+  text-align: center;
+  min-height: 18px;
+}

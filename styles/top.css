@@ -1,0 +1,35 @@
+/* src/styles/top.css */
+.moodCard {
+    background-color: #FFFFFF;
+    border: 1px solid #F0F0F0;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.moodCard .title {
+    font-size: 16px;
+    color: #444444;
+    margin-bottom: 16px;
+    align-self: flex-start;
+    font-weight: 500;
+}
+
+.moodCard .circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05); /* เส้นขอบวงกลมบางๆ */
+}
+
+.moodCard .moodText {
+    font-size: 18px;
+    font-weight: 500;
+    color: #222222;
+}
