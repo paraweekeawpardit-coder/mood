@@ -1,5 +1,5 @@
 require('dotenv').config();
-const User= require("../module/Auth")
+const User= require("../Module/Auth")
 // for generat user id please dont forget serch!
 const { v4: uuidv4 } = require('uuid');
 const { error } = require("node:console");
