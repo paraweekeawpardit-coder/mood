@@ -1,31 +1,73 @@
-/* src/styles/Score.css */
+/* ── Score.css (Modernized) ────────────────────────────────── */
 .score-card {
-    background-color: #FFFFFF;
-    border: 1px solid #F0F0F0;
-    border-radius: 16px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.score-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+}
+
+.score-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
 }
 
 .score-title {
-    font-size: 16px;
-    color: #444444;
-    margin-bottom: 8px;
-    font-weight: 500;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.score-body {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .score-number {
-    font-size: 72px;
-    font-weight: bold;
-    line-height: 1;
-    margin-bottom: 12px;
-    color: #000000;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #0f172a;
+  letter-spacing: -0.03em;
 }
 
 .score-diff {
-    font-size: 14px;
-    font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.score-diff.is-positive {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.score-diff.is-negative {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.score-diff.is-neutral {
+  background: #f1f5f9;
+  color: #64748b;
 }

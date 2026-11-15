@@ -1,70 +1,100 @@
-/* จัดการพื้นหลังของหน้าหลักให้เป็นสีเทาอ่อน/ขาว และปรับฟอนต์โดยรวม */
+/* ── Home.css (Modernized Dashboard) ─────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
 .home-page {
-    background-color: #ffffff;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f8fafc;
+    font-family: 'Nunito', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
     min-height: 100vh;
-    color: #000000;
+    color: #0f172a;
 }
 
 /* แถบเมนูด้านบน */
 .home-navbar {
-    border-bottom: 1px solid #f0f0f0;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 /* คอนเทนเนอร์หลัก จัดเนื้อหาให้อยู่ตรงกลางและจำกัดความกว้าง */
 .home-content {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 30px 20px;
+    padding: 40px 24px;
     display: flex;
     flex-direction: column;
-    gap: 35px; /* ระยะห่างระหว่างแต่ละ Section */
+    gap: 40px; /* ระยะห่างระหว่างแต่ละ Section */
 }
 
 /* ส่วนหัวข้อต้อนรับ */
+.home-top {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .home-title h1 {
     font-size: 32px;
     font-weight: 800;
-    margin: 0 0 5px 0;
-    letter-spacing: 1px;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.02em;
+    color: #0f172a;
 }
 
 .home-title p {
     font-size: 16px;
-    color: #4a4a4a;
+    color: #64748b;
     margin: 0;
+    font-weight: 500;
 }
 
-/* จัดเรียงการ์ด Streak และ Wellness ให้อยู่ข้างกันแบบสัดส่วนเท่า ๆ กัน */
-.home-top {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
+/* จัดเรียงการ์ด Streak และ Wellness ให้อยู่ข้างกัน */
 .home-top-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
 /* หัวข้อรองของแต่ละ Section */
 .section-title {
-    font-size: 16px;
-    font-weight: 500;
-    color: #000000;
-    margin: 0 0 15px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.01em;
 }
 
 /* จัดเรียงการ์ดแนะนำ (Mindfulness / Breathing) */
+.home-recommend {
+    display: flex;
+    flex-direction: column;
+}
+
 .recommend-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
 /* ส่วนแสดงผลกราฟสัปดาห์ */
 .home-mood {
     display: flex;
     flex-direction: column;
+}
+
+/* Responsive สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 768px) {
+    .home-content {
+        padding: 24px 16px;
+        gap: 28px;
+    }
+
+    .home-top-cards,
+    .recommend-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .home-title h1 {
+        font-size: 26px;
+    }
 }

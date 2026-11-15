@@ -1,0 +1,342 @@
+/* src/styles/Settings.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+.settings-page {
+  --s-ink: #1a1a2e;
+  --s-muted: #64748b;
+  --s-line: #e2e8f0;
+  --s-accent: #1a1a2e;
+  --s-danger: #ef4444;
+  --s-ok: #10b981;
+
+  min-height: calc(100vh - 80px);
+  padding: 40px 24px 96px;
+  background: #f8fafc;
+  color: var(--s-ink);
+  font-family: 'Nunito', sans-serif;
+}
+
+.settings-container {
+  max-width: 840px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Page Header & Profile Banner ── */
+.settings-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid var(--s-line);
+  border-radius: 24px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 24px -4px rgba(15, 23, 42, 0.04);
+}
+
+.hero-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.hero-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #c0f5be 0%, #cffaff 50%, #ebdff6 100%);
+  color: #1a1a2e;
+  font-size: 1.65rem;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px -4px rgba(26, 26, 46, 0.12);
+  flex-shrink: 0;
+}
+
+.hero-text h1 {
+  margin: 0 0 4px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--s-ink);
+}
+
+.hero-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--s-muted);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+/* ── Settings Section Cards ── */
+.settings-section {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px 44px;
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid var(--s-line);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px -4px rgba(15, 23, 42, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.settings-section:hover {
+  box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.07);
+}
+
+.settings-section.is-danger-zone {
+  border-color: #fee2e2;
+  background: linear-gradient(to right, #ffffff 60%, #fffafa 100%);
+}
+
+.settings-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.section-tag.is-danger {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.settings-intro h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--s-ink);
+}
+
+.settings-intro p {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--s-muted);
+}
+
+/* ── Forms & Inputs ── */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 440px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.field-group label {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.settings-form input {
+  width: 100%;
+  height: 46px;
+  padding: 0 16px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--s-ink);
+  transition: all 0.2s ease;
+}
+
+.settings-form input.has-toggle {
+  padding-right: 46px;
+}
+
+.settings-form input:hover {
+  border-color: #cbd5e1;
+  background: #ffffff;
+}
+
+.settings-form input:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: var(--s-accent);
+  box-shadow: 0 0 0 4px rgba(26, 26, 46, 0.08);
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 6px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.toggle-password-btn:hover {
+  color: #1a1a2e;
+  background: #f1f5f9;
+}
+
+.password-hint {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.password-hint.is-valid {
+  color: #059669;
+}
+
+/* ── Buttons & Status Messages ── */
+.settings-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.settings-btn {
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 14px;
+  border: 1.5px solid transparent;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.18s ease;
+}
+
+.settings-btn.is-primary {
+  background: var(--s-accent);
+  color: #ffffff;
+  box-shadow: 0 6px 16px -4px rgba(26, 26, 46, 0.25);
+}
+
+.settings-btn.is-primary:hover:not(:disabled) {
+  background: #2e2e52;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -4px rgba(26, 26, 46, 0.3);
+}
+
+.settings-btn.is-danger {
+  background: #ffffff;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.settings-btn.is-danger:hover {
+  background: #fef2f2;
+  border-color: #f87171;
+  transform: translateY(-1px);
+}
+
+.settings-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.settings-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.settings-message {
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 12px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-message.is-ok {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.settings-message.is-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+@media (max-width: 760px) {
+  .settings-page {
+    padding: 24px 16px 64px;
+  }
+
+  .settings-hero,
+  .settings-section {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+}

@@ -1,31 +1,29 @@
-/* ── Breath.css ──────────────────────────────────────────────
-   CHANGES:
-   - title font-weight 800 → 600
-   - desc font-weight 600 → 400, color อ่อนลง
-   - padding ลดลง
-──────────────────────────────────────────────────────────── */
-
+/* ── Breath.css (Modernized) ──────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 
 .breath-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  background: #f2f2f2;
-  border-radius: 16px;
-  padding: 14px 18px;
+  gap: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px 24px;
   cursor: pointer;
-  transition: filter 0.15s;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s ease;
 }
 
 .breath-card:hover {
-  filter: brightness(0.97);
+  transform: translateY(-2px);
+  border-color: #c7d2fe;
+  box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.12);
 }
 
 .breath-image-box {
   flex-shrink: 0;
-  background: #ddf0f8;
-  border-radius: 50%;
+  background: #eef2ff;
+  border-radius: 16px;
   width: 56px;
   height: 56px;
   display: flex;
@@ -35,28 +33,31 @@
 }
 
 .breath-image {
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.breath-card:hover .breath-image {
+  transform: scale(1.08);
 }
 
 .breath-content {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .breath-title {
-  /* CHANGE: weight บางลง */
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #1a1a2e;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .breath-description {
-  font-size: 0.75rem;
-  /* CHANGE: อ่อนลง */
-  color: #999;
+  font-size: 0.85rem;
+  color: #64748b;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.45;
 }

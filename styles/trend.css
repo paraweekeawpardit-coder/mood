@@ -1,30 +1,31 @@
 /* src/styles/trend.css */
 .trend-container {
-    background-color: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    border-radius: 16px;
-    padding: 24px;
-    box-sizing: border-box;
-    width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #eceef4;
+  border-radius: 24px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(26, 26, 46, 0.04);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .trend-title {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #222222;
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #1a1a2e;
+  text-transform: capitalize;
 }
 
 .trend-container .no-data {
-    color: #888888;
-    font-size: 14px;
-    text-align: center;
-    padding: 40px 0;
+  color: #9ca3af;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 48px 0;
 }
 
-/* สำหรับครอบคลุมสไตล์ภายในตัว Recharts SVG ให้สวยขึ้น */
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
-    stroke: #F0F0F0 !important;
+  stroke: #f1f3f8 !important;
 }

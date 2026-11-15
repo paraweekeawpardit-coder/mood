@@ -43,6 +43,17 @@ export default function Distribution() {
         }
     }
 
+    function getMoodColor(moodName: string) {
+        switch (moodName) {
+            case "very good": return "#8ce99a";
+            case "great":     return "#ffe066";
+            case "meh":       return "#ffc078";
+            case "mad":       return "#ffa8c5";
+            case "sad":       return "#74c0fc";
+            case "anxious":   return "#b197fc";
+            default:          return "#cbd5e1";
+        }
+    }
     // aboute  
     // เดิม:
     // handleShow()
@@ -65,34 +76,35 @@ export default function Distribution() {
 
     return (
 
-         <div className="distribution-box">
-
-            <h2 className="distribution-title">
-                mood distribution
-             </h2>
-            {
-                mood.length === 0 && (
-                    <p className="no-data">
-                        not have any information
-                    </p>
-                )
-            }
-            {
-                mood.map((item, index) => (
-
-                    <div
-                        className="distribution-item"
-                        key={index}
-                    >
-                        <span className="mood-name">
-                            {item._id}
-                        </span>
-                        <span className="distribution-percent">
-                            {((item.count / total) * 100).toFixed(0)}%
-                        </span>
-                    </div>
-                ))
-            }
+<div className="distribution-box">
+            <h2 className="distribution-title">Mood Distribution</h2>
+            {mood.length === 0 ? (
+                <p className="no-data">No mood data yet</p>
+            ) : (
+                <div className="distribution-list">
+                    {mood.map((item, index) => {
+                        const percent = total > 0 ? Math.round((item.count / total) * 100) : 0;
+                        const color = getMoodColor(item._id);
+                        return (
+                            <div className="distribution-item" key={index}>
+                                <div className="distribution-row-top">
+                                    <div className="mood-label-wrap">
+                                        <span className="mood-dot" style={{ backgroundColor: color }} />
+                                        <span className="mood-name">{item._id}</span>
+                                    </div>
+                                    <span className="distribution-percent">{percent}%</span>
+                                </div>
+                                <div className="progress-track">
+                                    <div
+                                        className="progress-fill"
+                                        style={{ width: `${percent}%`, backgroundColor: color }}
+                                    />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     )
 }

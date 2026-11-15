@@ -5,93 +5,60 @@ import axios from "axios";
 import "@/styles/Score.css"
 
 export default function Score() {
-    console.log("function score")
     const [score, setScore] = useState(0);
-
     const [diff, setDiff] = useState({
-        message: "",
-        color: "gray"
+        message: "No previous data",
+        status: "is-neutral"
     });
 
     async function handleShow() {
-
-        console.log("handleShow score")
-
         try {
-
-            const res = await axios.get(
-                "http://localhost:5000/api/note/score",{
-                 
-                    withCredentials: true,
-                    headers: {
-                        token:`Bearer ${localStorage.getItem("token")}`
-                    }
+            const res = await axios.get("http://localhost:5000/api/note/score", {
+                withCredentials: true,
+                headers: {
+                    token: `Bearer ${localStorage.getItem("token")}`
                 }
-            );
-            console.log(res.data)
+            });
+
             if (res.data.month.totalScore !== undefined) {
-                const currentScore =  res.data.month.totalScore;
+                const currentScore = res.data.month.totalScore;
                 const previousScore = res.data.lastmonth.totalScore;
 
                 setScore(currentScore);
-
                 const difference = currentScore - previousScore;
 
                 if (difference >= 0) {
-
                     setDiff({
-                        message:
-                            "+" +
-                            difference.toFixed(1) +
-                            " vs last month",
-                        color: "green"
+                        message: `+${difference.toFixed(1)} vs last month`,
+                        status: "is-positive"
                     });
-
                 } else {
-
                     setDiff({
-
-                        message:
-                            difference.toFixed(1) +
-                            " vs last month",
-                        color: "red"
-
+                        message: `${difference.toFixed(1)} vs last month`,
+                        status: "is-negative"
                     });
-
                 }
-
             }
-
         } catch (err) {
-            
             console.log(err);
-
         }
     }
 
     useEffect(() => {
-
         handleShow();
-
     }, []);
 
     return (
-
         <div className="score-card">
-            <span className="score-title">
-                avg mood score
-            </span>
-            <span className="score-number">
-                {score.toFixed(1)}
-            </span>
-            <span
-                className="score-diff"
-                style={{
-                    color: diff.color
-                }}
-            >
-                {diff.message}
-            </span>
+            <div className="score-header">
+                <span className="score-title">Avg Mood Score</span>
+            </div>
+            <div className="score-body">
+                <span className="score-number">{score.toFixed(1)}</span>
+                <span className={`score-diff ${diff.status}`}>
+                    {diff.message}
+                </span>
+            </div>
         </div>
     )
 }

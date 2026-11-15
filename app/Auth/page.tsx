@@ -1,64 +1,49 @@
 "use client";
 
-import {
-    Dispatch,
-    SetStateAction,
-    useState
-} from "react";
-
+import { Dispatch, SetStateAction, useState } from "react";
 import Loginform from "@/components/loginform";
 import Registerform from "@/components/registerform";
 import "./Auth.css";
 
 type Props = {
-    setAuth: Dispatch<SetStateAction<boolean>>
-}
+    setAuth: Dispatch<SetStateAction<boolean>>;
+};
 
 export default function Auth({ setAuth }: Props) {
-    console.log("start");
     const [isLogin, setIslogin] = useState(true);
-    console.log("isLogin:", isLogin)
+    // ข้อความแจ้งหลังสมัครสำเร็จ แสดงที่หน้า login
+    const [notice, setNotice] = useState("");
 
     return (
         <div className="auth-page">
+            <aside className="auth-aside">
+                <img className="auth-logo" src="/loco.png" alt="Mood" />
 
-            <div className="auth-logo">
-                <img
-                    className="bar-logo"
-                    src="/loco.png"
-                    alt="logo"
-                />
-            </div>
+                {/* วงกลมสี = อารมณ์ของแบรนด์ เป็นภาพประกอบเฉย ๆ */}
+                <div className="auth-moods" aria-hidden="true">
+                    <span className="auth-mood is-blue" />
+                    <span className="auth-mood is-yellow" />
+                    <span className="auth-mood is-green" />
+                    <span className="auth-mood is-pink" />
+                </div>
 
+                <p className="auth-tagline">Check in with yourself, one day at a time.</p>
+            </aside>
 
-            <div className="circle circle-blue-big" />
-            <div className="circle circle-yellow-big" />
-            <div className="circle circle-green" />
-            <div className="circle circle-yellow-small" />
-            <div className="circle circle-pink" />
-            <div className="circle circle-blue-small" />
-            <div className="circle circle-green-big" />
-            <div className="circle circle-pink-big" />
-            <div className="auth-form">
-
-                {
-                    isLogin ? (
+            <main className="auth-main">
+                <div className="auth-form">
+                    {isLogin ? (
                         <Loginform
                             setAuth={setAuth}
                             setIslogin={setIslogin}
+                            notice={notice}
+                            setNotice={setNotice}
                         />
                     ) : (
-
-                        <Registerform
-                            setIslogin={setIslogin}
-                        />
-
-                    )
-
-                }
-
-            </div>
-
+                        <Registerform setIslogin={setIslogin} setNotice={setNotice} />
+                    )}
+                </div>
+            </main>
         </div>
     );
 }

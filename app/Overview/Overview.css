@@ -1,46 +1,78 @@
-/* Overview.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #FAFAFA;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: #333333;
+  font-family: 'Nunito', sans-serif;
+  background-color: #f6f7fb;
+  color: #1a1a2e;
 }
 
 .overview-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f6f7fb;
 }
 
+/* ── Navbar เต็มความกว้างด้านบน ── */
 .overview-navbar {
-    width: 100%;
-    margin-bottom: 24px;
+  width: 100%;
+  border-bottom: 1px solid #ebedf2;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
+/* ── Grid 3 คอลัมน์ ── */
 .overview-content {
-    display: grid;
-    grid-template-columns: 260px 1fr 340px;
-    gap: 24px;
-    align-items: start;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 330px;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 28px 24px 40px;
 }
 
 .overview-left,
 .overview-center,
 .overview-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0; /* ป้องกันกราฟในคอลัมน์กลางดัน Grid ทะลุ */
 }
 
-/* Responsive เผื่อหน้าจอเล็กลง */
-@media (max-width: 1024px) {
-    .overview-content {
-        grid-template-columns: 1fr;
-    }
+/* ── Responsive สำหรับหน้าจอขนาดกลาง (Tablet) ── */
+@media (max-width: 1120px) {
+  .overview-content {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .overview-right {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Responsive สำหรับหน้าจอมือถือ ── */
+@media (max-width: 768px) {
+  .overview-content {
+    grid-template-columns: 1fr;
+    padding: 20px 16px;
+  }
+
+  .overview-right {
+    grid-template-columns: 1fr;
+  }
 }

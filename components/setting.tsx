@@ -1,26 +1,60 @@
 "use client"
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { logout } from "@/lib/auth";
+import "../styles/setting-dropdown.css";
 
-export default function Setting(){
+export default function Setting() {
+    const router = useRouter();
+    const [username, setUsername] = useState("User");
 
-    return(
-        <div className="setting">
-            <div className="profile">
-                <img  src="/account.png" alt="account" />
-                <p>{localStorage.getItem("username")}</p>
+    useEffect(() => {
+        const stored = localStorage.getItem("username");
+        if (stored) setUsername(stored);
+    }, []);
+
+    return (
+        <div className="setting-dropdown">
+            <div className="setting-profile">
+                <div className="profile-avatar">
+                    <img src="/account.png" alt="account" />
+                </div>
+                <div className="profile-info">
+                    <p className="profile-name">{username}</p>
+                    <span className="profile-role">Personal Journal</span>
+                </div>
             </div>
-            <div>
-                <img  src="/setting.png" alt="setting" />
-                <p>setting</p>
-            </div>
-            <div>
+
+            <div className="setting-divider" />
+
+            <button
+                type="button"
+                className="setting-item"
+                onClick={() => router.push("/settings")}
+            >
+                <img src="/setting.png" alt="setting" />
+                <span>Settings</span>
+            </button>
+
+            <button
+                type="button"
+                className="setting-item"
+                onClick={() => router.push("/help")}
+            >
                 <img src="/question.png" alt="question" />
-                <p>privacy and help</p>
-            </div>
-            <div>
-                <img src="logout.png" alt="logout" />
-                <p>log out</p> 
-            </div>
+                <span>Privacy & Help</span>
+            </button>
+
+            <div className="setting-divider" />
+
+            <button
+                type="button"
+                className="setting-item is-logout"
+                onClick={logout}
+            >
+                <img src="/logout.png" alt="logout" />
+                <span>Log out</span>
+            </button>
         </div>
-    )
+    );
 }

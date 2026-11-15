@@ -1,177 +1,172 @@
-
-"use client"
+"use client";
 
 import axios from "axios";
-import { useState } from "react";
-import { Dispatch, SetStateAction } from "react";
-import "@/styles/login.css";
+import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import AuthField from "../components/Authfield";
+import { API_URL, getErrorMessage } from "@/lib/auth";
 
-type DateStack = {
-    count:number,
-    Lasdate:Date
-}
 type Props = {
-    setAuth: Dispatch<SetStateAction<boolean>>
-    setIslogin: Dispatch<SetStateAction<boolean>>
-}
+    setAuth: Dispatch<SetStateAction<boolean>>;
+    setIslogin: Dispatch<SetStateAction<boolean>>;
+    notice: string;
+    setNotice: Dispatch<SetStateAction<string>>;
+};
 
-export default function Loginform({setAuth,setIslogin}: Props) {
+const SOCIALS = [
+    { src: "/mail.png", label: "Gmail" },
+    { src: "/line.webp", label: "Line" },
+    { src: "/facebook.webp", label: "Facebook" },
+];
 
-    console.log("login")
+export default function Loginform({ setAuth, setIslogin, notice, setNotice }: Props) {
     const [message, setMessage] = useState("");
-    const [loginData, setLoginData] = useState({
-        name: "",
-        password: ""
-    });
-    const storageData = { count: 1, Date: null };
+    const [errors, setErrors] = useState<{ name?: string; password?: string }>({});
+    const [loading, setLoading] = useState(false);
+    const [remember, setRemember] = useState(false);
+    const [loginData, setLoginData] = useState({ name: "", password: "" });
 
-    
-    async function handleSubmit() {
+    async function handleSubmit(e: FormEvent) {
+        e.preventDefault();
+        if (loading) return;
 
+        const name = loginData.name.trim();
+        const newErrors: { name?: string; password?: string } = {};
+
+        if (!name) newErrors.name = "Please enter your username.";
+        if (!loginData.password) newErrors.password = "Please enter your password.";
+
+        setErrors(newErrors);
+        setMessage("");
+        setNotice("");
+
+        if (Object.keys(newErrors).length > 0) return;
+
+        setLoading(true);
         try {
+            const res = await axios.post(`${API_URL}/auth/login`, {
+                name,
+                password: loginData.password,
+            });
 
-            const res = await axios.post(
-            "http://localhost:5000/api/auth/login",
-            loginData
-            );
-
-            if (res.data.token && res.data.id && res.data.name) {
-                localStorage.setItem("token",res.data.token);
-                localStorage.setItem("id",res.data.id);
-                localStorage.setItem("username",res.data.name);
-                
-                const existingStorage = localStorage.getItem("user-Storage");
-    
-                if (!existingStorage) {
-                    // ถ้ายังไม่มีข้อมูลอยู่เลย (เช่น เพิ่งเข้าใช้เครื่องนี้ครั้งแรก หรือเพิ่งสมัครใหม่) ค่อยสร้างค่าเริ่มต้นให้
-                    const storageData = { count: 1, date: null }; // เปลี่ยนคีย์เป็น 'date' พิมพ์เล็กแล้ว
-                    localStorage.setItem("user-Storage", JSON.stringify(storageData));
-                }
-                setAuth(true);
-            } else {
-                console.log("worng password")
-                setMessage(res.data.error);
+            const { token, id, name: savedName } = res.data;
+            if (!token || !id || !savedName) {
+                setMessage(res.data.error || "Log in failed. Try again.");
+                return;
             }
 
+            localStorage.setItem("token", token);
+            localStorage.setItem("id", id);
+            localStorage.setItem("username", savedName);
+
+            if (remember) {
+                localStorage.setItem("remember", "1");
+            } else {
+                localStorage.removeItem("remember");
+            }
+
+            if (!localStorage.getItem("user-Storage")) {
+                localStorage.setItem("user-Storage", JSON.stringify({ count: 1, date: null }));
+            }
+            setAuth(true);
         } catch (err) {
-            console.log(err);
+            setMessage(getErrorMessage(err));
+        } finally {
+            setLoading(false);
         }
     }
 
     return (
+        <>
+            <h1 className="auth-title">Log in</h1>
+            <p className="auth-subtitle">Welcome back. Pick up where you left off.</p>
 
-        <div className="login-container">
+            {notice && (
+                <p role="status" className="auth-notice">
+                    {notice}
+                </p>
+            )}
 
-            <h1 className="header">
-                Log in
-            </h1>
-
-            <form
-                className="login-form"
-                onSubmit={(e) => { e.preventDefault(); handleSubmit();}}
-            >
-
-                <label className="label">
-                    username
-                </label>
-
-                <input
-                    className="blank"
-                    type="text"
-                    value={loginData.name}
-                    onChange={(e) => {
-                        console.log(e.target.value);
-                        setLoginData({
-                            ...loginData,
-                            name: e.target.value
-                        })
-                    }}
-                />
-
-                <label className="label">
-                    password
-                </label>
-
-                <input
-                    className="blank"
-                    type="password"
-                    value={loginData.password}
-                    onChange={(e) => {
-                        setLoginData({
-                            ...loginData,
-                            password: e.target.value
-                        })
-                    }}
-                />
-
-                <div className="remember-box">
-                    <input type="checkbox" />
-                    <span>
-                        remember me
-                    </span>
+            <form onSubmit={handleSubmit} noValidate>
+                <div className="auth-field-group">
+                    <AuthField
+                        label="Username"
+                        value={loginData.name}
+                        onChange={(name) => {
+                            setLoginData({ ...loginData, name });
+                            if (errors.name) setErrors({ ...errors, name: undefined });
+                        }}
+                        autoComplete="username"
+                    />
+                    {errors.name && <p className="auth-field-error">{errors.name}</p>}
                 </div>
 
-                <p className="register-text">
-                    if you don't have account please
-                    <span 
-                        className="register-link"
-                        onClick={() => setIslogin(false)}
-                        style={{ cursor: "pointer" }}
-                    >
-                        Register
-                    </span>
-                </p>
-
-                <button
-                    className="submit-btn"
-                    type="submit"
-                >
-                    Log in
-                </button>
-
-                <button
-                    type="button"
-                    className="social-login"
-                >
-                    <img
-                        src="/mail.png"
-                        alt="gmail"
+                <div className="auth-field-group">
+                    <AuthField
+                        label="Password"
+                        type="password"
+                        value={loginData.password}
+                        onChange={(password) => {
+                            setLoginData({ ...loginData, password });
+                            if (errors.password) setErrors({ ...errors, password: undefined });
+                        }}
+                        autoComplete="current-password"
                     />
-                    <span>
-                        Log in with Gmail
-                    </span>
-                </button>
+                    {errors.password && <p className="auth-field-error">{errors.password}</p>}
+                </div>
 
-                <button
-                    type="button"
-                    className="social-login"
-                >
-                    <img
-                        src="/line.webp"
-                        alt="line"
+                <label className="auth-check" style={{ marginTop: "16px" }}>
+                    <input
+                        type="checkbox"
+                        checked={remember}
+                        onChange={(e) => setRemember(e.target.checked)}
                     />
-                    <span>
-                        Log in with Line
-                    </span>
-                </button>
+                    <span>Keep me logged in on this device</span>
+                </label>
 
-                <button
-                    type="button"
-                    className="social-login"
-                >
-                    <img
-                        src="/facebook.webp"
-                        alt="facebook"
-                    />
-                    <span>
-                        Log in with Facebook
-                    </span>
-                </button>
+                {message && (
+                    <p role="alert" className="auth-message">
+                        {message}
+                    </p>
+                )}
 
-                <p className="message">
-                    {message}
-                </p>
+                <button className="auth-submit" type="submit" disabled={loading}>
+                    {loading ? "Logging in…" : "Log in"}
+                </button>
             </form>
-        </div>
-    )
+
+            <div className="auth-divider">
+                <span>or continue with</span>
+            </div>
+
+            <div className="auth-socials">
+                {SOCIALS.map(({ src, label }) => (
+                    <button
+                        key={label}
+                        type="button"
+                        className="auth-social"
+                        disabled
+                        title="Coming soon"
+                    >
+                        <img src={src} alt="" />
+                        <span>{label}</span>
+                    </button>
+                ))}
+            </div>
+            <p className="auth-hint auth-hint-center">Social login is coming soon.</p>
+
+            <p className="auth-switch">
+                Don’t have an account?{" "}
+                <button
+                    type="button"
+                    className="auth-link"
+                    onClick={() => {
+                        setNotice("");
+                        setIslogin(false);
+                    }}
+                >
+                    Create an account
+                </button>
+            </p>
+        </>
+    );
 }

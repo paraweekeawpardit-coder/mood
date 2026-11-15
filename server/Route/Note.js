@@ -12,5 +12,6 @@ router.get("/score", AuthToken, Note.GetScore);
 router.get("/topmood", AuthToken, Note.TopMood);
 router.get("/praise", AuthToken, Note.GetPraise);
 router.get("/moodtrend", AuthToken, Note.MoodTrend);
+router.get("/monthmoods", AuthToken, Note.GetMonthMoods);
 
 module.exports = router;

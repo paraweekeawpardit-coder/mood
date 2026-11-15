@@ -1,7 +1,3 @@
-/* ── Tracker.css ─────────────────────────────────────────────
-   Design ref: note form ซ้าย, calendar ขวา, navbar บนสุด
-──────────────────────────────────────────────────────────── */
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 
 *,
@@ -14,50 +10,55 @@
 
 body {
   font-family: 'Nunito', sans-serif;
-  background: #ffffff;
+  background: #f6f7fb; /* พื้นหลังสีเทาอมฟ้าอ่อนๆ ให้การ์ดสีขาวเด่นขึ้น */
   color: #1a1a2e;
 }
 
-/* ── Page wrapper ── */
 .tracker-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #ffffff;
 }
 
-/* ── Navbar ── */
 .tracker-navbar {
   width: 100%;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid #ebedf2;
   background: #ffffff;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-/* ── Content: note ซ้าย calendar ขวา ── */
-/* Tracker.css */
+/* จัด 2 คอลัมน์ให้อยู่กึ่งกลางหน้าจอและระยะห่างพอดีกัน */
 .tracker-content {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 32px;
-  padding: 32px 48px;
-  max-width: 1100px;
+  grid-template-columns: minmax(0, 560px) 340px;
+  justify-content: center; /* บีบทั้ง 2 ก้อนให้อยู่ตรงกลาง ไม่แยกห่างกันเกินไป */
+  gap: 28px;
+  padding: 40px 24px;
   width: 100%;
   align-items: start;
-
-  /* CHANGE: เพิ่ม 2 บรรทัดนี้ */
-  margin: 0 auto;        /* ← center ใน page */
 }
 
-/* ── Note column ── */
-.tracker-note {
-  width: 100%;
-}
-
-/* ── Calendar column ── */
+.tracker-note,
 .tracker-calendar {
   width: 100%;
-  padding-top: 8px;
+}
+
+.tracker-calendar {
+  position: sticky;
+  top: 90px;
+}
+
+/* Responsive สำหรับจอมือถือ / แท็บเล็ต */
+@media (max-width: 900px) {
+  .tracker-content {
+    grid-template-columns: minmax(0, 560px);
+    padding: 24px 16px;
+  }
+
+  .tracker-calendar {
+    position: static;
+    order: -1; /* บนมือถือให้ปฏิทินอยู่บน เพื่อเลือกวันก่อนจด */
+  }
 }
