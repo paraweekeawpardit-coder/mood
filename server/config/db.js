@@ -1,16 +1,15 @@
-const mongoose = require('mongoose');
-
-const connectDB = async () => {
-    try {
-
-        await mongoose.connect( process.env.MONGO_URI || "mongodb://localhost:27017/wellnessData", {
-        });
-        console.log("Database connected successfully");
-    } catch (err) {
-        console.error("Database connection error:", err);
-    }
-};
-
-module.exports = connectDB;
-
-// 76!vfHDMc+/usD4 supabase
+import { MongoClient } from 'mongodb';
+const client = new MongoClient("mongodb+srv://paraweekeawpardit_db_user:oU7yT2nBJJOzAO0u@cluster0.ty3vwpy.mongodb.net/");
+export async function connectToMongoDB() {
+  try {
+    await client.connect();
+    console.log("You successfully connected to MongoDB!");
+    return client;
+  } catch (err) {
+    console.dir(err);
+  }
+}
+// Call this only when your application terminates
+export async function disconnectFromMongoDB() {
+  await client.close();
+}
