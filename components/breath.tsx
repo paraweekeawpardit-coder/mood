@@ -11,9 +11,13 @@ export default function Breath() {
                 />
             </div>
             <div className="breath-content">
-                <span className="breath-title">
+                <a
+                className="title"
+                href="https://youtu.be/OXjlR4mXxSk?si=RXFbKCsTPwbBJOFU"
+                target="_blank"
+                rel="noopener noreferrer">
                     Breathing Exercise
-                </span>
+                </a>
                 <span className="breath-description">
                     Ease tension with a 4-7-8 breathing session — just 5 minutes
                 </span>

@@ -1,21 +1,23 @@
 import "@/styles/mindful.css";
-export default function Mindful(){
+
+export default function Mindful() {
   return (
     <div className="card">
-
       <div className="card-image-box">
         <img src="/mind.png" alt="mindful" />
       </div>
 
       <div className="text">
-        <span className="title">
+        <a
+          className="title"
+          href="https://youtu.be/sG7DBA-mgFY?si=DYK1qcYPBbFLpK6L"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Mindfulness
-          </span>
-        <span className="desc">
-          10-min guided awareness session
-          </span>
+        </a>
+        <span className="desc">10-min guided awareness session</span>
       </div>
-
     </div>
-  )
+  );
 }
