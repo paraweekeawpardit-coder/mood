@@ -84,7 +84,7 @@ export default function Registerform({ setIslogin, setNotice }: Props) {
 
         setLoading(true);
         try {
-            await axios.post(`${API_URL}/auth/register`, {
+            await axios.post(`https://mood-98v8.onrender.com/auth/register`, {
                 name,
                 contact,
                 password: registerData.password,

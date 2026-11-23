@@ -13,7 +13,7 @@ export default function Lesson() {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/note/lesson",
+                "https://mood-98v8.onrender.com/api/note/lesson",
                 {
                     withCredentials: true,
                     headers: {

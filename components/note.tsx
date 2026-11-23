@@ -38,7 +38,7 @@ export default function Note({ date, onSaved }: Props) {
 
             const token = localStorage.getItem("token");
             const res = await axios.get(
-                "http://localhost:5000/api/note/moodmemo",
+                "https://mood-98v8.onrender.com/api/note/moodmemo",
                 {
                     withCredentials: true,
                     headers: {

@@ -31,7 +31,7 @@ export default function Calendar({ selectedDate, setDate, refreshKey = 0 }: Prop
     useEffect(() => {
         async function fetchMonthMoods() {
             try {
-                const res = await axios.get("http://localhost:5000/api/note/monthmoods", {
+                const res = await axios.get("https://mood-98v8.onrender.com/api/note/monthmoods", {
                     withCredentials: true,
                     headers: {
                         authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -62,7 +62,7 @@ export default function Week() {
         try {
             const token = localStorage.getItem("token");
             const res = await axios.post(
-                "http://localhost:5000/api/chat/chat",
+                "https://mood-98v8.onrender.com/api/chat/chat",
                 { text },
                 {
                     withCredentials: true,

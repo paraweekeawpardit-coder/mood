@@ -37,7 +37,7 @@ export default function Chat() {
 
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/chat/chat",
+                "https://mood-98v8.onrender.com/api/chat/chat",
                 userMessage,
                 {
                     headers: {

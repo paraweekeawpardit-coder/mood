@@ -43,7 +43,7 @@ export default function Loginform({ setAuth, setIslogin, notice, setNotice }: Pr
 
         setLoading(true);
         try {
-            const res = await axios.post(`${API_URL}/auth/login`, {
+            const res = await axios.post(`https://mood-98v8.onrender.com/auth/login`, {
                 name,
                 password: loginData.password,
             });

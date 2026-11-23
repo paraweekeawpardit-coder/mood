@@ -12,7 +12,7 @@ export default function Praise() {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/note/praise",
+                "https://mood-98v8.onrender.com/api/note/praise",
                 {
                     withCredentials: true,
                     headers: {

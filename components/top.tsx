@@ -12,7 +12,7 @@ export default function TopMood() {
 
         try {
 
-            const res = await axios.get("http://localhost:5000/api/note/topmood",
+            const res = await axios.get("https://mood-98v8.onrender.com/api/note/topmood",
                 {
                     withCredentials: true,
                     headers: {

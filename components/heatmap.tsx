@@ -51,7 +51,7 @@ export default function HeatMap() {
         try {
 
             const res = await axios.get(
-                "http://localhost:5000/api/note/moodtrend",
+                "https://mood-98v8.onrender.com/api/note/moodtrend",
                 {
                     withCredentials: true,
                     headers: {

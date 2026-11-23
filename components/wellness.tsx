@@ -13,7 +13,7 @@ export default function Wellness() {
         try {
             
             const res = await axios.get(
-                "http://localhost:5000/api/note/score",
+                "https://mood-98v8.onrender.com/api/note/score",
                 {
                     withCredentials: true,
                     headers: {

@@ -15,7 +15,7 @@ export default function Trend() {
 
   async function handleShow() {
     try {
-      const res = await axios.get("http://localhost:5000/api/note/moodtrend", {
+      const res = await axios.get("https://mood-98v8.onrender.com/api/note/moodtrend", {
         withCredentials: true,
         headers: {
           token: `Bearer ${localStorage.getItem("token")}`,

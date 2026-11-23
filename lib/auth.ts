@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base URL ของ backend (ตรงกับที่ฟอร์ม login/register เรียกอยู่: /api/auth/...)
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://mood-98v8.onrender.com/api";
 
 // Keys ที่เก็บตอน login ถ้าชื่อไม่ตรงให้แก้ที่นี่ที่เดียว
 export const AUTH_KEYS = ["token", "username", "id", "remember"];

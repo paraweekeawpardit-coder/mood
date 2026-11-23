@@ -20,7 +20,7 @@ export default function Distribution() {
 
             // about header why must have
             const res = await axios.get(
-                "http://localhost:5000/api/note/moodStat",
+                "https://mood-98v8.onrender.com/api/note/moodStat",
                 {
                     withCredentials: true,
                     headers: {

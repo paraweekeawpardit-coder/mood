@@ -13,7 +13,7 @@ export default function Score() {
 
     async function handleShow() {
         try {
-            const res = await axios.get("http://localhost:5000/api/note/score", {
+            const res = await axios.get("https://mood-98v8.onrender.com/api/note/score", {
                 withCredentials: true,
                 headers: {
                     token: `Bearer ${localStorage.getItem("token")}`
